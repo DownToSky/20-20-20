@@ -1,2 +1,2 @@
 # 20-20-20
-A chrome extension remind the user about 20/20/20 rule
+Reminds the use to take a 20-second break and focus your eyes on something at least 20 feet away every 20 minutes.
