@@ -1,13 +1,13 @@
 
-chrome.alarms.create("the20",{periodInMinutes: 1})
+chrome.alarms.create("the20",{periodInMinutes: 20})
 
 chrome.alarms.onAlarm.addListener(function(){
 		var  NotificationOptions = {
-			type: "image",
+			type: "basic",
 			title: "Take a break!",
 			iconUrl: "icon19.png",
 			message: "Look 20 feet away for 20 seconds!",
-			eventTime: Date.now() + n
+			eventTime: Date.now()
 		};
         chrome.notifications.create(NotificationOptions);
     });
