@@ -9,5 +9,6 @@ chrome.alarms.onAlarm.addListener(function(){
 			message: "Look 20 feet away for 20 seconds!",
 			eventTime: Date.now()
 		};
+		console.log(Date.now());
         chrome.notifications.create(NotificationOptions);
     });
