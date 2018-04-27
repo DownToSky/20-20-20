@@ -1,12 +1,29 @@
-
-chrome.alarms.create("the20",{periodInMinutes: 20})
+var per = 1
+chrome.alarms.create("the20",{periodInMinutes: per})
 
 chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
         if (btnIdx === 0) {
             chrome.notifications.clear(notifId);
         }
-    
 });
+
+chrome.browserAction.onClicked.addListener(function(tab){
+	chrome.alarms.getAll(function(alarms){
+		if(alarms.length > 0) {
+			chrome.alarms.clear(alarms[0].name);
+			chrome.browserAction.setTitle({title:"Enable the alarm"});
+			chrome.browserAction.setIcon(
+			{path:"icons8-delete-50.png"}
+			);
+		}else{
+			chrome.alarms.create("the20",{periodInMinutes: per});
+			chrome.browserAction.setTitle({title:"Disable the alarm"});
+			chrome.browserAction.setIcon({path:"icons8-time-50.png"});
+		}
+	});
+});
+
+
 
 function currTime(){
 	var d = new Date();
@@ -25,7 +42,6 @@ chrome.alarms.onAlarm.addListener(function(){
 				chrome.notifications.clear(notification);
 			}
 		});
-		
 		
 		
 		var  NotificationOptions = {

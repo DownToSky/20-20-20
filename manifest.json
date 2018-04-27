@@ -4,8 +4,8 @@
 	"description": "Reminds you take a break from computer ever 20 minutes",
 	"version": "1.0",
 	"browser_action":{
-		"default_icon": "icon19.png",
-		"default_title": "Follow the 20/20/20 rule! Our lord and savior !!"
+		"default_icon": "icons8-time-50.png",
+		"default_title": "Disable the alarm"
 	},
 	"background":{
 		"scripts":["background.js"],
