@@ -10,6 +10,7 @@ To set this up
 - Turn on the developer mode
 - Load Unpacked and select the repository folder
 - You should notice a small hourglass icon appearing on your browser action bar. 
+
 ![](https://github.com/Hedwig/20-20-20/blob/master/icons8-time-50.png)
 
 You can enable and disable the alarm by clicking on the icon.
