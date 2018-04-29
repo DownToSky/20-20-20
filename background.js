@@ -1,5 +1,5 @@
-var per = 1
-chrome.alarms.create("the20",{periodInMinutes: per})
+var per = 20;
+chrome.alarms.create("the20",{periodInMinutes: per});
 
 chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
         if (btnIdx === 0) {
@@ -47,14 +47,14 @@ chrome.alarms.onAlarm.addListener(function(){
 		var  NotificationOptions = {
 			type: "basic",
 			title: "Take a break!",
-			iconUrl: "icon19.png",
+			iconUrl: "icons8-time-50.png",
 			message: "Look 20 feet away for 20 seconds!",
 			contextMessage: currTime(),
 			eventTime: Date.now(),
 			requireInteraction: true,
 			buttons: [{
 				title: "I did it!",
-				iconUrl: "icon19.png"
+				iconUrl: "icons8-checked-64.png"
 			}],
 		};
 		console.log(Date.now());
