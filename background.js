@@ -4,13 +4,19 @@ chrome.alarms.create("the20",{periodInMinutes: per});
 chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
         if (btnIdx === 0) {
             chrome.notifications.clear(notifId);
-        }
+        }else if (btnIdx === 1) {
+			var countdownAudio = new Audio();
+			countdownAudio.src = "countdown.mp3";
+			countdownAudio.play();
+			sleep(per * 1000);
+			chrome.notifications.clear(notifId);
+		}
 });
 
 chrome.browserAction.onClicked.addListener(function(tab){
-	chrome.alarms.getAll(function(alarms){
+	chrome.alarms.get("the20",function(alarms){
 		if(alarms.length > 0) {
-			chrome.alarms.clear(alarms[0].name);
+			chrome.alarms.clear("the20");
 			chrome.browserAction.setTitle({title:"Enable the alarm"});
 			chrome.browserAction.setIcon(
 			{path:"icons8-delete-50.png"}
@@ -55,6 +61,10 @@ chrome.alarms.onAlarm.addListener(function(){
 			buttons: [{
 				title: "I did it!",
 				iconUrl: "icons8-checked-64.png"
+			},
+			{
+				title: "Countdown 20 seconds",
+				iconUrl: "icons8-last-24-hours-64.png"
 			}],
 		};
 		console.log(Date.now());
