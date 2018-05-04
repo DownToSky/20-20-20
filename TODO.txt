@@ -1,0 +1,14 @@
+Don't just clear all notifications. Clear the specific one.
+
+Don't let the notification disappear before the music is done playing. Also,
+let the user end the music by clicking "I'm done!"
+
+Allow volume management, time management, song management,
+ and change of "I'm done"
+
+How does Chrome handle alarms? (for example, does it still run in the background
+ if chrome is minimized or computer is idle?)
+
+Be able to use extension outside the developer mode
+
+FIX: why does audio play only partially?
