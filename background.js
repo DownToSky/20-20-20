@@ -1,20 +1,31 @@
+//Number of minutes between each reminder
 var per = 20;
+
+//Create a new audio instance and set the path
+var countdownAudio = new Audio();
+countdownAudio.src = "countdown.mp3";
+countdownAudio.preload = 'auto';
+
+//Alarm set for notification
 chrome.alarms.create("the20",{periodInMinutes: per});
 
+//Event listener for button click on notification
 chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
         if (btnIdx === 0) {
             chrome.notifications.clear(notifId);
         }else if (btnIdx === 1) {
-			var countdownAudio = new Audio();
-			countdownAudio.src = "countdown.mp3";
+      countdownAudio.load();
 			countdownAudio.play();
-			sleep(per * 1000);
+
 			chrome.notifications.clear(notifId);
 		}
 });
 
+//Event listener for clicking browseraction
+//Note: works only if there is no popup for browseraction
 chrome.browserAction.onClicked.addListener(function(tab){
 	chrome.alarms.get("the20",function(alarms){
+    //enabling or disabling the alarm(removing or adding it)
 		if(alarms.length > 0) {
 			chrome.alarms.clear("the20");
 			chrome.browserAction.setTitle({title:"Enable the alarm"});
@@ -30,7 +41,7 @@ chrome.browserAction.onClicked.addListener(function(tab){
 });
 
 
-
+//Returns the current local time in string format HH:MM:SS am|pm
 function currTime(){
 	var d = new Date();
 	var ampm = d.getHours() >= 12 ? 'pm' : 'am';
@@ -42,14 +53,16 @@ function currTime(){
 	return hour + ":" + minute + ":" + second;
 }
 
+//Event listender for notification alarm
 chrome.alarms.onAlarm.addListener(function(){
+    //Deletes any notification created by this extensions previously
 		chrome.notifications.getAll(function(notifs){
 			for (var notification in notifs){
 				chrome.notifications.clear(notification);
 			}
 		});
-		
-		
+
+    //Create notification
 		var  NotificationOptions = {
 			type: "basic",
 			title: "Take a break!",
@@ -64,7 +77,7 @@ chrome.alarms.onAlarm.addListener(function(){
 			},
 			{
 				title: "Countdown 20 seconds",
-				iconUrl: "icons8-last-24-hours-64.png"
+				iconUrl: "icons8-music-64.png"
 			}],
 		};
 		console.log(Date.now());
