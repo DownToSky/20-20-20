@@ -15,5 +15,4 @@ To set this up
 
 You can enable and disable the alarm by clicking on the icon.
 
-
 [The Canadian Association of Optometrists](https://opto.ca/health-library/the-20-20-20-rule)
