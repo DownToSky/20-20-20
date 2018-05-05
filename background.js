@@ -41,6 +41,7 @@ chrome.browserAction.onClicked.addListener(function(tab){
 });
 
 
+ 
 //Returns the current local time in string format HH:MM:SS am|pm
 function currTime(){
 	var d = new Date();
