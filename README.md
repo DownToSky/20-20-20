@@ -6,9 +6,9 @@ This is a simple chrome extension that reminds you to take a break every 20 minu
 To set this up
 - Download this repo
 - Open google chrome
-- Type and go to **chrome://extensions**
+- In the URL section type **chrome://extensions**
 - Turn on the developer mode
-- Load Unpacked and select the repository folder
+- Select Load Unpacked and select the repository folder
 - You should notice a small hourglass icon appearing on your browser action bar. 
 
 ![](https://github.com/Hedwig/20-20-20/blob/master/icons8-time-50.png)
@@ -16,4 +16,3 @@ To set this up
 You can enable and disable the alarm by clicking on the icon.
 
 [The Canadian Association of Optometrists](https://opto.ca/health-library/the-20-20-20-rule)
-
