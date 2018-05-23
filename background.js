@@ -24,9 +24,9 @@ chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
 //Event listener for clicking browseraction
 //Note: works only if there is no popup for browseraction
 chrome.browserAction.onClicked.addListener(function(tab){
-	chrome.alarms.get("the20",function(alarms){
+	chrome.alarms.get("the20",function(alarm){
     //enabling or disabling the alarm(removing or adding it)
-		if(alarms.length > 0) {
+		if(typeof alarm != 'undefined') {
 			chrome.alarms.clear("the20");
 			chrome.browserAction.setTitle({title:"Enable the alarm"});
 			chrome.browserAction.setIcon(
