@@ -1,21 +1,21 @@
 {
-	"manifest_version": 2,
-	"name": "The 20/20/20 Rule",
-	"options_ui": {
+  "manifest_version": 2,
+  "name": "The 20/20/20 Rule",
+  "options_ui": {
     "page": "options.html",
     "open_in_tab": false
   },
-	"description": "Reminds you take a break from computer ever 20 minutes.
-									Customizable!",
-	"version": "1.1",
-	"browser_action":{
-		"default_icon": "icons8-time-50.png",
-		"default_title": "Disable the alarm"
-	},
-	"background":{
-		"scripts":["background.js"],
-		"persistent":false
-		},
-	"permissions":["notifications", "alarms"],
-	"incognito": "spanning"
+  "description": "Reminds you take a break from computer ever 20 minutes.
+  Customizable!",
+  "version": "1.1",
+  "browser_action": {
+    "default_icon": "icons8-time-50.png",
+    "default_title": "Disable the alarm"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["notifications", "alarms"],
+  "incognito": "spanning"
 }
