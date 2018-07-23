@@ -5,7 +5,8 @@
     "page": "options.html",
     "open_in_tab": false
   },
-	"description": "Reminds you take a break from computer ever 20 minutes",
+	"description": "Reminds you take a break from computer ever 20 minutes.
+									Customizable!",
 	"version": "1.1",
 	"browser_action":{
 		"default_icon": "icons8-time-50.png",

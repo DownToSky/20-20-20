@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head><title>My Test Extension Options</title></head>
+<head>
+<link rel="stylesheet" href="options.css"></head>
 <body>
-
-Favorite color:
-<select id="color">
- <option value="red">red</option>
- <option value="green">green</option>
- <option value="blue">blue</option>
- <option value="yellow">yellow</option>
-</select>
-
-<label>
-  <input type="checkbox" id="like">
-  I like colors.
-</label>
-
-<div id="status"></div>
-<button id="save">Save</button>
-
-<script src="options.js"></script>
+  <div class="row" id="ibijzv">
+    <div class="cell">
+      <div class="c4208">Settings:
+      </div>
+      <form class="form">
+        <div class="form-group">
+          <label class="label">Alert me every:</label>
+          <input placeholder="Number of minutes" class="input"/>
+        </div>
+        <div class="form-group">
+          <label class="label">Play the music for:</label>
+          <input type="email" placeholder="Number of seconds here" class="input"/>
+        </div>
+        <div class="form-group">
+        </div>
+        <label class="label">Change the music played:</label>
+        <button type="button" class="button">Browse</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
