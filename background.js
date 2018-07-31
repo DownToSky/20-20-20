@@ -1,5 +1,5 @@
 //Number of minutes between each reminder
-var per = 1;
+var per = 20;
 
 //Create a new audio instance and set the path
 var countdownAudio = new Audio();
