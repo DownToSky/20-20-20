@@ -1,27 +1,21 @@
 //Number of minutes between each reminder
 var per = 20;
-
-//Create a new audio instance and set the path
-var countdownAudio = new Audio();
-countdownAudio.src = "countdown.mp3";
-countdownAudio.preload = 'auto';
-
+myAudio = new Audio("notif.mp3");
 //Alarm set for notification
 chrome.alarms.create("the20", {
   periodInMinutes: per
 });
+
 
 //Event listener for button click on notification
 chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
   if (btnIdx === 0) {
     chrome.notifications.clear(notifId);
   } else if (btnIdx === 1) {
-    countdownAudio.load();
-    setTimeout(function(){},1000)
-    countdownAudio.play();
-    countdownAudio.currentTime = 0;
-
-    chrome.notifications.clear(notifId);
+    chrome.alarms.create("20 second countdown",{
+      notifID: notifId,
+      when: Date.now() + 20*1000
+    });
   }
 });
 
@@ -67,33 +61,42 @@ function currTime() {
 }
 
 //Event listender for notification alarm
-chrome.alarms.onAlarm.addListener(function() {
-  //Deletes any notification created by this extensions previously
-  chrome.notifications.getAll(function(notifs) {
-    for (var notification in notifs) {
-      chrome.notifications.clear(notification);
-    }
-  });
-
-  //Create notification
-  var NotificationOptions = {
-    type: "basic",
-    title: "Take a break!",
-    iconUrl: "icons8-time-50.png",
-    message: "Look 20 feet away for 20 seconds!",
-    contextMessage: currTime(),
-    eventTime: Date.now(),
-    requireInteraction: true,
-    buttons: [{
-        title: "I did it!",
-        iconUrl: "icons8-checked-64.png"
-      },
-      {
-        title: "Countdown 20 seconds",
-        iconUrl: "icons8-music-64.png"
+chrome.alarms.onAlarm.addListener(function(alarm) {
+  if (alarm.name === "the20")
+  {
+    //Deletes the20 created by this extensions previously
+    chrome.notifications.getAll(function(notifs) {
+      for (var notification in notifs) {
+        chrome.notifications.clear(notification);
       }
-    ],
-  };
-  console.log(Date.now());
-  chrome.notifications.create(NotificationOptions);
+    });
+
+    //Create notification
+    var NotificationOptions = {
+      type: "basic",
+      title: "Take a break!",
+      iconUrl: "icons8-time-50.png",
+      message: "Look 20 feet away for 20 seconds!",
+      contextMessage: currTime(),
+      eventTime: Date.now(),
+      requireInteraction: true,
+      buttons: [{
+          title: "I did it!",
+          iconUrl: "icons8-checked-64.png"
+        },
+        {
+          title: "Countdown 20 seconds",
+          iconUrl: "icons8-music-64.png"
+        }
+      ],
+    };
+    chrome.notifications.create(NotificationOptions);
+  }
+  else {
+    if (alarm.name === "20 second countdown")
+    {
+      myAudio.play();
+      chrome.notifications.clear(alarm.notifID);
+    }
+  }
 });
